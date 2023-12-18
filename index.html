@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>He's for every Reason</title>
+  <style>
+    .form{
+        text-align: center;
+    }
+    #video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none; /* Hide the video initially */
+      z-index: -1; /* Set z-index to display video behind other content */
+    }
+    .custom-input {
+        margin: 30px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 250px;
+      transition: border-color 0.3s ease-in-out;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for the input when focused */
+    .custom-input:focus {
+      outline: none;
+      border-color: #6c5ce7;
+      box-shadow: 0 0 5px rgba(108, 92, 231, 0.5);
+    }
+
+    /* Style for the input placeholder */
+    .custom-input::placeholder {
+      color: #999;
+    }
+
+    /* Style for the input's hover effect */
+    .custom-input:hover {
+      border-color: #bdc3c7;
+    }
+
+    /* Style for the input on activation (click or touch) */
+    .custom-input:active {
+      border-color: #6c5ce7;
+    }
+
+    /* Style for the submit button */
+    .submit-button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #6c5ce7;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    /* Style for the submit button on hover */
+    .submit-button:hover {
+      background-color: #8c7ae6;
+    }
+    .thalaa{
+        font-size: 100px;
+        display: none;
+        color: #cbc81e;
+        font-weight: 1000;
+        font-family: fantasy;
+        letter-spacing: 10px;
+        text-shadow: 
+        -2px -2px 0 #000, 2px -2px 0 #000, /* Top border */
+        -2px 2px 0 #000, 2px 2px 0 #000, /* Bottom border */
+        0px -2px 0 #000, 0px 2px 0 #000, /* Left & right borders */
+        -2px 0px 0 #000, 2px 0px 0 #000;
+        animation: textInOut 2s ease-in-out infinite alternate;
+      padding: 20px;
+      text-align: center;
+    }
+    @keyframes textInOut {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- <button id="playButton">Play Video</button> -->
+  <div class="form">
+    <input type="text" id="textInput" class="custom-input" placeholder="Enter text...">
+    <button type="button" id="submitButton" class="submit-button">Submit</button>
+  </div>
+  <div class="thalaa" id="thalaa">THALA FOR A REASON</div>
+  <div class="semi-circle" id="semiCircle"></div>
+  <div id="video-container">
+    <video id="backgroundVideo" width="100%" height="auto" loop muted>
+      <source src="thala.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <audio id="backgroundAudio" loop>
+      <source src="thalaa.mp3" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
+  </div>
+
+  <script>
+     document.getElementById("textInput").addEventListener("keypress", function(event) {
+      if (event.keyCode === 13) {
+        const userInput = document.getElementById("inputField").value;
+        handleInput(userInput);
+      }
+    });
+
+    document.getElementById("submitButton").addEventListener("click", function() {
+        var inputData = document.getElementById("textInput").value;
+      handleInput(inputData);
+       // Start playing the audio
+    });
+    function handleInput(input) {
+      const words = input.split(' ');
+      const digits = input.replace(/\D/g, '').split('').map(Number);
+      
+      if (words.length === 1 && words[0].length === 7) {
+        console.log(7);
+        var videoContainer = document.getElementById("video-container");
+      videoContainer.style.display = "block"; // Show the video container
+        var th = document.getElementById("thalaa");
+        th.style.display = "block"; // Hide the video container
+      var video = document.getElementById("backgroundVideo");
+      video.play(); // Start playing the video
+
+      var audio = document.getElementById("backgroundAudio");
+      audio.play();
+      } else if (words.length === 7) {
+        console.log(7);
+        var th = document.getElementById("thalaa");
+        th.style.display = "block"; 
+        var videoContainer = document.getElementById("video-container");
+      videoContainer.style.display = "block"; // Show the video container
+
+      var video = document.getElementById("backgroundVideo");
+      video.play(); // Start playing the video
+
+      var audio = document.getElementById("backgroundAudio");
+      audio.play();
+      } else if (!isNaN(input) && digits.length > 0) {
+        const sum = digits.reduce((acc, val) => acc + val, 0);
+        if (sum === 7) {
+          console.log(7);
+          var th = document.getElementById("thalaa");
+        th.style.display = "block"; 
+          var videoContainer = document.getElementById("video-container");
+      videoContainer.style.display = "block"; // Show the video container
+
+      var video = document.getElementById("backgroundVideo");
+      video.play(); // Start playing the video
+
+      var audio = document.getElementById("backgroundAudio");
+      audio.play();
+        }
+      } else {
+        console.log('Input does not match any condition for output.');
+      }
+    }
+  </script>
+</body>
+</html>
